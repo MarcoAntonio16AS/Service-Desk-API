@@ -1,19 +1,18 @@
+const chamadoRoutes = require('./routes/chamadoRoutes')
+//Requerendo o que então finalmente criamos dividindo em camadas.
+
 const express = require("express");
 const app = express()
+const PORT = 3000
 
 app.use(express.json());
 //Parciador - Transforma em JSON, permitindo que o backend possa interpretar o documento
 //Converte o que está em meu body em um json para que possa ser lido!
 
-app.get('/', function(req, res){
-    res.send('Rota raiz')
-})
+app.use('/chamados', chamadoRoutes)
 
-app.post('/chamados', function(req, res){
-    const titulo = req.body.titulo;
-    res.json({"titulo do chamado":titulo})
+app.listen(PORT, function(){
+    console.log('Servidor rodando na porta ' + PORT)
 })
-
-app.listen(3000, function(){
-    console.log('Servidor rodando na porta 3000')
-})
+//O uso da constante PORT permite mudar a porta se necessário, sem mudar nada da estrutura
+//Apenas o valor da constante.
