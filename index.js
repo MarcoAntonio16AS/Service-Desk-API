@@ -11,20 +11,13 @@ app.use(express.json());
 //Converte o que está em meu body em um json para que possa ser lido!
 //---------------------------------------------------------------------------------------------
 
-//Rota - Chamados
-app.use('/chamados', chamadoRoutes)
+//Rotas
+app.use('/chamados', chamadoRoutes) //Chamado
+app.use('/tecnico', tecnicoRoutes) //Tecnico
 
 app.listen(PORT, function(){
     console.log('Servidor rodando na porta ' + PORT)
 })
 //O uso da constante PORT permite mudar a porta se necessário, sem mudar nada da estrutura
 //Apenas o valor da constante.
-//---------------------------------------------------------------------------------------------
-
-//Rota - Tecnico
-app.use('/tecnico', tecnicoRoutes)
-
-app.listen(PORT, function(){
-    console.log('Servidor rodando na porta ' + PORT)
-})
 //---------------------------------------------------------------------------------------------
