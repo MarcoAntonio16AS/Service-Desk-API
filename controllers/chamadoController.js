@@ -3,11 +3,14 @@ const chamadoService = require('../services/chamadoServices');
 //2 pontos (../) quer dizer que é para sair do diretório atual e ir para 1 camada acima
 
 function criar(req, res){
-    console.log("1 - CONTROLLER recebeu", req.body);
-
-    const chamado = chamadoService.criar(req.body)
-
-    res.status(201).json(chamado);
+    try {
+        console.log("1 - CONTROLLER recebeu", req.body);
+        const chamado = chamadoService.criar(req.body)
+        res.status(201).json(chamado);
+    } catch(error){
+        res.status(404).json(error.message)
+    }
+    
 }
 
 module.exports = { criar }

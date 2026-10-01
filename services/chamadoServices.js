@@ -1,3 +1,5 @@
+const { suporteN1 } = require('../handlers/suporteHandler');
+
 function criar(dados){
     console.log("2 - SERVICE recebeu ", dados);
     
@@ -5,8 +7,12 @@ function criar(dados){
     const chamado = {
         id: 1,
         titulo: dados.titulo,
+        prioridade: dados.prioridade,
         status: "aberto"
     }
+
+    chamado.responsavel = suporteN1(chamado);
+
     console.log("3 - SERVICE criou ", chamado)
     return chamado
 }
